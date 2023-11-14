@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "questions",
+  "info": {
+    "singularName": "question",
+    "pluralName": "questions",
+    "displayName": "Question"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "single",
+        "multiple",
+        "rank",
+        "fulltext"
+      ]
+    },
+    "text": {
+      "type": "text"
+    },
+    "variants": {
+      "type": "text"
+    },
+    "answer": {
+      "type": "text"
+    },
+    "test": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::test.test",
+      "inversedBy": "questions"
+    }
+  }
+}

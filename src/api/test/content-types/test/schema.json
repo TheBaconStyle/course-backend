@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tests",
+  "info": {
+    "singularName": "test",
+    "pluralName": "tests",
+    "displayName": "Test"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "theme": {
+      "type": "text"
+    },
+    "pass": {
+      "type": "integer",
+      "default": 0
+    },
+    "good": {
+      "type": "integer",
+      "default": 0
+    },
+    "excellent": {
+      "type": "integer",
+      "default": 0
+    },
+    "questions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::question.question",
+      "mappedBy": "test"
+    }
+  }
+}
