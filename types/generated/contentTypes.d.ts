@@ -362,72 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiQuestionQuestion extends Schema.CollectionType {
-  collectionName: 'questions';
-  info: {
-    singularName: 'question';
-    pluralName: 'questions';
-    displayName: 'Question';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    type: Attribute.Enumeration<['single', 'multiple', 'rank', 'fulltext']>;
-    text: Attribute.Text;
-    variants: Attribute.Text;
-    answer: Attribute.Text;
-    test: Attribute.Relation<
-      'api::question.question',
-      'manyToOne',
-      'api::test.test'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::question.question',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::question.question',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiTestTest extends Schema.CollectionType {
-  collectionName: 'tests';
-  info: {
-    singularName: 'test';
-    pluralName: 'tests';
-    displayName: 'Test';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    theme: Attribute.Text;
-    pass: Attribute.Integer & Attribute.DefaultTo<0>;
-    good: Attribute.Integer & Attribute.DefaultTo<0>;
-    excellent: Attribute.Integer & Attribute.DefaultTo<0>;
-    questions: Attribute.Relation<
-      'api::test.test',
-      'oneToMany',
-      'api::question.question'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::test.test', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::test.test', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -743,6 +677,295 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiAnswerAnswer extends Schema.CollectionType {
+  collectionName: 'answers';
+  info: {
+    singularName: 'answer';
+    pluralName: 'answers';
+    displayName: 'Answer';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    answer: Attribute.Text;
+    question: Attribute.Relation<
+      'api::answer.answer',
+      'oneToOne',
+      'api::question.question'
+    >;
+    attempt: Attribute.Relation<
+      'api::answer.answer',
+      'manyToOne',
+      'api::attempt.attempt'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::answer.answer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::answer.answer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiAttemptAttempt extends Schema.CollectionType {
+  collectionName: 'attempts';
+  info: {
+    singularName: 'attempt';
+    pluralName: 'attempts';
+    displayName: 'Attempt';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    student: Attribute.Relation<
+      'api::attempt.attempt',
+      'manyToOne',
+      'api::student.student'
+    >;
+    test: Attribute.Relation<
+      'api::attempt.attempt',
+      'manyToOne',
+      'api::test.test'
+    >;
+    answers: Attribute.Relation<
+      'api::attempt.attempt',
+      'oneToMany',
+      'api::answer.answer'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::attempt.attempt',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::attempt.attempt',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCourseCourse extends Schema.CollectionType {
+  collectionName: 'courses';
+  info: {
+    singularName: 'course';
+    pluralName: 'courses';
+    displayName: 'Course';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    name: Attribute.String;
+    teacher: Attribute.Relation<
+      'api::course.course',
+      'oneToOne',
+      'admin::user'
+    >;
+    tests: Attribute.Relation<
+      'api::course.course',
+      'oneToMany',
+      'api::test.test'
+    >;
+    groups: Attribute.Relation<
+      'api::course.course',
+      'manyToMany',
+      'api::group.group'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::course.course',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::course.course',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiGroupGroup extends Schema.CollectionType {
+  collectionName: 'groups';
+  info: {
+    singularName: 'group';
+    pluralName: 'groups';
+    displayName: 'Group';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    name: Attribute.String;
+    students: Attribute.Relation<
+      'api::group.group',
+      'oneToMany',
+      'api::student.student'
+    >;
+    courses: Attribute.Relation<
+      'api::group.group',
+      'manyToMany',
+      'api::course.course'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::group.group',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::group.group',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiQuestionQuestion extends Schema.CollectionType {
+  collectionName: 'questions';
+  info: {
+    singularName: 'question';
+    pluralName: 'questions';
+    displayName: 'Question';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    type: Attribute.Enumeration<['single', 'multiple', 'rank', 'fulltext']>;
+    text: Attribute.Text;
+    variants: Attribute.Text;
+    answer: Attribute.Text;
+    test: Attribute.Relation<
+      'api::question.question',
+      'manyToOne',
+      'api::test.test'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::question.question',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::question.question',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiStudentStudent extends Schema.CollectionType {
+  collectionName: 'students';
+  info: {
+    singularName: 'student';
+    pluralName: 'students';
+    displayName: 'Student';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    user: Attribute.Relation<
+      'api::student.student',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    group: Attribute.Relation<
+      'api::student.student',
+      'manyToOne',
+      'api::group.group'
+    >;
+    attempts: Attribute.Relation<
+      'api::student.student',
+      'oneToMany',
+      'api::attempt.attempt'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::student.student',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::student.student',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTestTest extends Schema.CollectionType {
+  collectionName: 'tests';
+  info: {
+    singularName: 'test';
+    pluralName: 'tests';
+    displayName: 'Test';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    theme: Attribute.Text;
+    pass: Attribute.Integer & Attribute.DefaultTo<0>;
+    good: Attribute.Integer & Attribute.DefaultTo<0>;
+    excellent: Attribute.Integer & Attribute.DefaultTo<0>;
+    questions: Attribute.Relation<
+      'api::test.test',
+      'oneToMany',
+      'api::question.question'
+    >;
+    course: Attribute.Relation<
+      'api::test.test',
+      'manyToOne',
+      'api::course.course'
+    >;
+    attempts: Attribute.Relation<
+      'api::test.test',
+      'oneToMany',
+      'api::attempt.attempt'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::test.test', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::test.test', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -753,14 +976,19 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::question.question': ApiQuestionQuestion;
-      'api::test.test': ApiTestTest;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::i18n.locale': PluginI18NLocale;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::answer.answer': ApiAnswerAnswer;
+      'api::attempt.attempt': ApiAttemptAttempt;
+      'api::course.course': ApiCourseCourse;
+      'api::group.group': ApiGroupGroup;
+      'api::question.question': ApiQuestionQuestion;
+      'api::student.student': ApiStudentStudent;
+      'api::test.test': ApiTestTest;
     }
   }
 }

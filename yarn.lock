@@ -4967,6 +4967,7 @@ __metadata:
     react: "npm:^18.0.0"
     react-dom: "npm:^18.0.0"
     react-router-dom: "npm:5.3.4"
+    strapi-plugin-transformer: "npm:^3.1.2"
     styled-components: "npm:5.3.3"
   languageName: unknown
   linkType: soft
@@ -11996,6 +11997,17 @@ __metadata:
   version: 1.5.0
   resolution: "statuses@npm:1.5.0"
   checksum: c469b9519de16a4bb19600205cffb39ee471a5f17b82589757ca7bd40a8d92ebb6ed9f98b5a540c5d302ccbc78f15dc03cc0280dd6e00df1335568a5d5758a5c
+  languageName: node
+  linkType: hard
+
+"strapi-plugin-transformer@npm:^3.1.2":
+  version: 3.1.2
+  resolution: "strapi-plugin-transformer@npm:3.1.2"
+  peerDependencies:
+    "@strapi/strapi": ^4.0.7
+    lodash: ^4.17.21
+    yup: ^0.32.9
+  checksum: 3e5ec19f8b99c06656823050190714a1f49532d587f9ca1943bc45fb542c22cab038781364bff65647403e72a4ab6cbce1d8ddc536f6b26348e4b509d1dd78ff
   languageName: node
   linkType: hard
 
