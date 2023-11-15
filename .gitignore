@@ -114,4 +114,5 @@ build
 .strapi-updater.json
 .vscode
 .yarn
+.strapi
 
