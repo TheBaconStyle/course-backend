@@ -25,6 +25,12 @@
       "relation": "manyToMany",
       "target": "api::course.course",
       "mappedBy": "groups"
+    },
+    "sessions": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::session.session",
+      "mappedBy": "groups"
     }
   }
 }

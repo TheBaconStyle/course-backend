@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "question_variants",
+  "info": {
+    "singularName": "question-variant",
+    "pluralName": "question-variants",
+    "displayName": "QuestionVariant"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "attempt": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::attempt.attempt",
+      "inversedBy": "question_variants"
+    },
+    "sequence_index": {
+      "type": "integer"
+    },
+    "variants_dump": {
+      "type": "text"
+    },
+    "question": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::question.question"
+    },
+    "answer": {
+      "type": "text"
+    }
+  }
+}

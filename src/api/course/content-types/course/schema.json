@@ -15,11 +15,6 @@
     "name": {
       "type": "string"
     },
-    "teacher": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "admin::user"
-    },
     "tests": {
       "type": "relation",
       "relation": "oneToMany",
@@ -30,6 +25,12 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::group.group",
+      "inversedBy": "courses"
+    },
+    "teacher": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::teacher.teacher",
       "inversedBy": "courses"
     }
   }

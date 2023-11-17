@@ -12,11 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "user": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "plugin::users-permissions.user"
-    },
     "group": {
       "type": "relation",
       "relation": "manyToOne",
@@ -28,6 +23,26 @@
       "relation": "oneToMany",
       "target": "api::attempt.attempt",
       "mappedBy": "student"
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "surname": {
+      "type": "string"
+    },
+    "sessions": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::session.session",
+      "mappedBy": "students"
+    },
+    "account": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
     }
   }
 }

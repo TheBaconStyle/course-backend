@@ -18,16 +18,19 @@
       "target": "api::student.student",
       "inversedBy": "attempts"
     },
-    "test": {
+    "expires_at": {
+      "type": "datetime"
+    },
+    "session": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::test.test",
+      "target": "api::session.session",
       "inversedBy": "attempts"
     },
-    "answers": {
+    "question_variants": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::answer.answer",
+      "target": "api::question-variant.question-variant",
       "mappedBy": "attempt"
     }
   }

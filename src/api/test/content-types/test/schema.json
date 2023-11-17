@@ -39,10 +39,10 @@
       "target": "api::course.course",
       "inversedBy": "tests"
     },
-    "attempts": {
+    "sessions": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::attempt.attempt",
+      "target": "api::session.session",
       "mappedBy": "test"
     }
   }

@@ -1,12 +1,12 @@
 "use strict";
 
 /**
- * student service
+ * session service
  */
 
 const { createCoreService } = require("@strapi/strapi").factories;
 
 module.exports = createCoreService(
-  "api::student.student",
+  "api::session.session",
   ({ strapi }) => ({})
 );

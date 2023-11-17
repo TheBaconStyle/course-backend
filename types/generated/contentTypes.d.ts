@@ -677,46 +677,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface ApiAnswerAnswer extends Schema.CollectionType {
-  collectionName: 'answers';
-  info: {
-    singularName: 'answer';
-    pluralName: 'answers';
-    displayName: 'Answer';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    answer: Attribute.Text;
-    question: Attribute.Relation<
-      'api::answer.answer',
-      'oneToOne',
-      'api::question.question'
-    >;
-    attempt: Attribute.Relation<
-      'api::answer.answer',
-      'manyToOne',
-      'api::attempt.attempt'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::answer.answer',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::answer.answer',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiAttemptAttempt extends Schema.CollectionType {
   collectionName: 'attempts';
   info: {
@@ -734,15 +694,16 @@ export interface ApiAttemptAttempt extends Schema.CollectionType {
       'manyToOne',
       'api::student.student'
     >;
-    test: Attribute.Relation<
+    expires_at: Attribute.DateTime;
+    session: Attribute.Relation<
       'api::attempt.attempt',
       'manyToOne',
-      'api::test.test'
+      'api::session.session'
     >;
-    answers: Attribute.Relation<
+    question_variants: Attribute.Relation<
       'api::attempt.attempt',
       'oneToMany',
-      'api::answer.answer'
+      'api::question-variant.question-variant'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -774,11 +735,6 @@ export interface ApiCourseCourse extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String;
-    teacher: Attribute.Relation<
-      'api::course.course',
-      'oneToOne',
-      'admin::user'
-    >;
     tests: Attribute.Relation<
       'api::course.course',
       'oneToMany',
@@ -788,6 +744,11 @@ export interface ApiCourseCourse extends Schema.CollectionType {
       'api::course.course',
       'manyToMany',
       'api::group.group'
+    >;
+    teacher: Attribute.Relation<
+      'api::course.course',
+      'manyToOne',
+      'api::teacher.teacher'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -827,6 +788,11 @@ export interface ApiGroupGroup extends Schema.CollectionType {
       'api::group.group',
       'manyToMany',
       'api::course.course'
+    >;
+    sessions: Attribute.Relation<
+      'api::group.group',
+      'manyToMany',
+      'api::session.session'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -882,6 +848,102 @@ export interface ApiQuestionQuestion extends Schema.CollectionType {
   };
 }
 
+export interface ApiQuestionVariantQuestionVariant
+  extends Schema.CollectionType {
+  collectionName: 'question_variants';
+  info: {
+    singularName: 'question-variant';
+    pluralName: 'question-variants';
+    displayName: 'QuestionVariant';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    attempt: Attribute.Relation<
+      'api::question-variant.question-variant',
+      'manyToOne',
+      'api::attempt.attempt'
+    >;
+    sequence_index: Attribute.Integer;
+    variants_dump: Attribute.Text;
+    question: Attribute.Relation<
+      'api::question-variant.question-variant',
+      'oneToOne',
+      'api::question.question'
+    >;
+    answer: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::question-variant.question-variant',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::question-variant.question-variant',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSessionSession extends Schema.CollectionType {
+  collectionName: 'sessions';
+  info: {
+    singularName: 'session';
+    pluralName: 'sessions';
+    displayName: 'Session';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    students: Attribute.Relation<
+      'api::session.session',
+      'manyToMany',
+      'api::student.student'
+    >;
+    groups: Attribute.Relation<
+      'api::session.session',
+      'manyToMany',
+      'api::group.group'
+    >;
+    test: Attribute.Relation<
+      'api::session.session',
+      'manyToOne',
+      'api::test.test'
+    >;
+    attempts: Attribute.Relation<
+      'api::session.session',
+      'oneToMany',
+      'api::attempt.attempt'
+    >;
+    start: Attribute.Date;
+    finish: Attribute.Date;
+    attempt_count: Attribute.Integer;
+    evaluation_method: Attribute.Enumeration<['best', 'last', 'avg']>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::session.session',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::session.session',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiStudentStudent extends Schema.CollectionType {
   collectionName: 'students';
   info: {
@@ -894,11 +956,6 @@ export interface ApiStudentStudent extends Schema.CollectionType {
     draftAndPublish: false;
   };
   attributes: {
-    user: Attribute.Relation<
-      'api::student.student',
-      'oneToOne',
-      'plugin::users-permissions.user'
-    >;
     group: Attribute.Relation<
       'api::student.student',
       'manyToOne',
@@ -908,6 +965,19 @@ export interface ApiStudentStudent extends Schema.CollectionType {
       'api::student.student',
       'oneToMany',
       'api::attempt.attempt'
+    >;
+    firstName: Attribute.String;
+    lastName: Attribute.String;
+    surname: Attribute.String;
+    sessions: Attribute.Relation<
+      'api::student.student',
+      'manyToMany',
+      'api::session.session'
+    >;
+    account: Attribute.Relation<
+      'api::student.student',
+      'oneToOne',
+      'plugin::users-permissions.user'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -919,6 +989,48 @@ export interface ApiStudentStudent extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::student.student',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTeacherTeacher extends Schema.CollectionType {
+  collectionName: 'teachers';
+  info: {
+    singularName: 'teacher';
+    pluralName: 'teachers';
+    displayName: 'Teacher';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    courses: Attribute.Relation<
+      'api::teacher.teacher',
+      'oneToMany',
+      'api::course.course'
+    >;
+    firstName: Attribute.String;
+    lastName: Attribute.String;
+    surname: Attribute.String;
+    admin_user: Attribute.Relation<
+      'api::teacher.teacher',
+      'oneToOne',
+      'admin::user'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::teacher.teacher',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::teacher.teacher',
       'oneToOne',
       'admin::user'
     > &
@@ -952,10 +1064,10 @@ export interface ApiTestTest extends Schema.CollectionType {
       'manyToOne',
       'api::course.course'
     >;
-    attempts: Attribute.Relation<
+    sessions: Attribute.Relation<
       'api::test.test',
       'oneToMany',
-      'api::attempt.attempt'
+      'api::session.session'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -982,12 +1094,14 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'api::answer.answer': ApiAnswerAnswer;
       'api::attempt.attempt': ApiAttemptAttempt;
       'api::course.course': ApiCourseCourse;
       'api::group.group': ApiGroupGroup;
       'api::question.question': ApiQuestionQuestion;
+      'api::question-variant.question-variant': ApiQuestionVariantQuestionVariant;
+      'api::session.session': ApiSessionSession;
       'api::student.student': ApiStudentStudent;
+      'api::teacher.teacher': ApiTeacherTeacher;
       'api::test.test': ApiTestTest;
     }
   }
