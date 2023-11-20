@@ -19,18 +19,21 @@
       "mappedBy": "teacher"
     },
     "firstName": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "lastName": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "surname": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
-    "admin_user": {
+    "account": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "admin::user"
+      "target": "plugin::users-permissions.user"
     }
   }
 }

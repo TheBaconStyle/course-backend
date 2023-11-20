@@ -44,6 +44,12 @@
       "relation": "oneToMany",
       "target": "api::session.session",
       "mappedBy": "test"
+    },
+    "question_count": {
+      "type": "integer"
+    },
+    "complete_time": {
+      "type": "integer"
     }
   }
 }

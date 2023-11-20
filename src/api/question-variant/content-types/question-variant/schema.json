@@ -4,10 +4,11 @@
   "info": {
     "singularName": "question-variant",
     "pluralName": "question-variants",
-    "displayName": "QuestionVariant"
+    "displayName": "QuestionVariant",
+    "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
@@ -21,7 +22,8 @@
       "type": "integer"
     },
     "variants_dump": {
-      "type": "text"
+      "type": "text",
+      "required": true
     },
     "question": {
       "type": "relation",

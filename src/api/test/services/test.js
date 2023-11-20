@@ -6,4 +6,7 @@
 
 const { createCoreService } = require("@strapi/strapi").factories;
 
-module.exports = createCoreService("api::test.test", ({ strapi }) => ({}));
+module.exports = createCoreService("api::test.test", ({ strapi }) => ({
+  async getCurrent({ sutdent, course }) {},
+  async getByCOurse({ teacher, course }) {},
+}));

@@ -25,13 +25,16 @@
       "mappedBy": "student"
     },
     "firstName": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "lastName": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "surname": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "sessions": {
       "type": "relation",

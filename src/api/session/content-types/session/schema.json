@@ -4,10 +4,11 @@
   "info": {
     "singularName": "session",
     "pluralName": "sessions",
-    "displayName": "Session"
+    "displayName": "Session",
+    "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
@@ -43,14 +44,6 @@
     },
     "attempt_count": {
       "type": "integer"
-    },
-    "evaluation_method": {
-      "type": "enumeration",
-      "enum": [
-        "best",
-        "last",
-        "avg"
-      ]
     }
   }
 }

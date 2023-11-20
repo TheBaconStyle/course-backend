@@ -694,7 +694,7 @@ export interface ApiAttemptAttempt extends Schema.CollectionType {
       'manyToOne',
       'api::student.student'
     >;
-    expires_at: Attribute.DateTime;
+    expires_at: Attribute.DateTime & Attribute.Required;
     session: Attribute.Relation<
       'api::attempt.attempt',
       'manyToOne',
@@ -817,15 +817,18 @@ export interface ApiQuestionQuestion extends Schema.CollectionType {
     singularName: 'question';
     pluralName: 'questions';
     displayName: 'Question';
+    description: '';
   };
   options: {
     draftAndPublish: false;
   };
   attributes: {
-    type: Attribute.Enumeration<['single', 'multiple', 'rank', 'fulltext']>;
-    text: Attribute.Text;
-    variants: Attribute.Text;
-    answer: Attribute.Text;
+    type: Attribute.Enumeration<['single', 'multiple', 'rank', 'fulltext']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'single'>;
+    text: Attribute.Text & Attribute.Required;
+    variants: Attribute.Text & Attribute.Required;
+    answer: Attribute.Text & Attribute.Required;
     test: Attribute.Relation<
       'api::question.question',
       'manyToOne',
@@ -855,9 +858,10 @@ export interface ApiQuestionVariantQuestionVariant
     singularName: 'question-variant';
     pluralName: 'question-variants';
     displayName: 'QuestionVariant';
+    description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     attempt: Attribute.Relation<
@@ -866,7 +870,7 @@ export interface ApiQuestionVariantQuestionVariant
       'api::attempt.attempt'
     >;
     sequence_index: Attribute.Integer;
-    variants_dump: Attribute.Text;
+    variants_dump: Attribute.Text & Attribute.Required;
     question: Attribute.Relation<
       'api::question-variant.question-variant',
       'oneToOne',
@@ -875,7 +879,6 @@ export interface ApiQuestionVariantQuestionVariant
     answer: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::question-variant.question-variant',
       'oneToOne',
@@ -897,9 +900,10 @@ export interface ApiSessionSession extends Schema.CollectionType {
     singularName: 'session';
     pluralName: 'sessions';
     displayName: 'Session';
+    description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     students: Attribute.Relation<
@@ -925,10 +929,8 @@ export interface ApiSessionSession extends Schema.CollectionType {
     start: Attribute.Date;
     finish: Attribute.Date;
     attempt_count: Attribute.Integer;
-    evaluation_method: Attribute.Enumeration<['best', 'last', 'avg']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::session.session',
       'oneToOne',
@@ -966,9 +968,9 @@ export interface ApiStudentStudent extends Schema.CollectionType {
       'oneToMany',
       'api::attempt.attempt'
     >;
-    firstName: Attribute.String;
-    lastName: Attribute.String;
-    surname: Attribute.String;
+    firstName: Attribute.String & Attribute.Required;
+    lastName: Attribute.String & Attribute.Required;
+    surname: Attribute.String & Attribute.Required;
     sessions: Attribute.Relation<
       'api::student.student',
       'manyToMany',
@@ -1013,13 +1015,13 @@ export interface ApiTeacherTeacher extends Schema.CollectionType {
       'oneToMany',
       'api::course.course'
     >;
-    firstName: Attribute.String;
-    lastName: Attribute.String;
-    surname: Attribute.String;
-    admin_user: Attribute.Relation<
+    firstName: Attribute.String & Attribute.Required;
+    lastName: Attribute.String & Attribute.Required;
+    surname: Attribute.String & Attribute.Required;
+    account: Attribute.Relation<
       'api::teacher.teacher',
       'oneToOne',
-      'admin::user'
+      'plugin::users-permissions.user'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1069,6 +1071,8 @@ export interface ApiTestTest extends Schema.CollectionType {
       'oneToMany',
       'api::session.session'
     >;
+    question_count: Attribute.Integer;
+    complete_time: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::test.test', 'oneToOne', 'admin::user'> &

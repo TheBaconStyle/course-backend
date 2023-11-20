@@ -19,7 +19,8 @@
       "inversedBy": "attempts"
     },
     "expires_at": {
-      "type": "datetime"
+      "type": "datetime",
+      "required": true
     },
     "session": {
       "type": "relation",

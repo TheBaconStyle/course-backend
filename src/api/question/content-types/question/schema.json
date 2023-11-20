@@ -4,7 +4,8 @@
   "info": {
     "singularName": "question",
     "pluralName": "questions",
-    "displayName": "Question"
+    "displayName": "Question",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -18,16 +19,21 @@
         "multiple",
         "rank",
         "fulltext"
-      ]
+      ],
+      "required": true,
+      "default": "single"
     },
     "text": {
-      "type": "text"
+      "type": "text",
+      "required": true
     },
     "variants": {
-      "type": "text"
+      "type": "text",
+      "required": true
     },
     "answer": {
-      "type": "text"
+      "type": "text",
+      "required": true
     },
     "test": {
       "type": "relation",
