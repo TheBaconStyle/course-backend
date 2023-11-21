@@ -13,7 +13,8 @@
   "pluginOptions": {},
   "attributes": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "tests": {
       "type": "relation",
@@ -32,6 +33,14 @@
       "relation": "manyToOne",
       "target": "api::teacher.teacher",
       "inversedBy": "courses"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     }
   }
 }

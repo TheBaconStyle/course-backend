@@ -734,7 +734,7 @@ export interface ApiCourseCourse extends Schema.CollectionType {
     draftAndPublish: false;
   };
   attributes: {
-    name: Attribute.String;
+    name: Attribute.String & Attribute.Required;
     tests: Attribute.Relation<
       'api::course.course',
       'oneToMany',
@@ -750,6 +750,7 @@ export interface ApiCourseCourse extends Schema.CollectionType {
       'manyToOne',
       'api::teacher.teacher'
     >;
+    image: Attribute.Media & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
