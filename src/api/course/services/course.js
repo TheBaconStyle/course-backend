@@ -7,19 +7,30 @@
 const { createCoreService } = require("@strapi/strapi").factories;
 
 module.exports = createCoreService("api::course.course", ({ strapi }) => ({
-  async getByStudent({ student }) {
+  async getAviableCourses({ account }) {
     const courseService = strapi.db.query("api::course.course");
     const courses = await courseService.findMany({
       where: {
-        groups: {
-          students: {
-            id: student,
+        $or: [
+          {
+            groups: {
+              students: {
+                account: {
+                  id: account,
+                },
+              },
+            },
           },
-        },
+          {
+            teacher: { account: { id: account } },
+          },
+        ],
       },
       populate: ["image"],
     });
-    return courses;
+    return courses.map((course) => ({
+      ...course,
+      image: `${course.image.hash}${course.image.ext}`,
+    }));
   },
-  async getByTeacher() {},
 }));
