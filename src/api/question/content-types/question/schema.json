@@ -27,19 +27,19 @@
       "type": "text",
       "required": true
     },
-    "variants": {
-      "type": "text",
-      "required": true
-    },
-    "answer": {
-      "type": "text",
-      "required": true
-    },
     "test": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::test.test",
       "inversedBy": "questions"
+    },
+    "variants": {
+      "type": "json",
+      "required": true
+    },
+    "answer": {
+      "type": "json",
+      "required": true
     }
   }
 }

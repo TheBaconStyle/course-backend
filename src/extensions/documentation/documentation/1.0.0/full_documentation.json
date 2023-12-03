@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2023-11-23T22:51:57.130Z"
+    "x-generation-date": "2023-12-03T18:23:36.430Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -137,6 +137,21 @@
                   ],
                   "example": "string or id"
                 }
+              },
+              "question_count": {
+                "type": "integer"
+              },
+              "pass": {
+                "type": "integer"
+              },
+              "good": {
+                "type": "integer"
+              },
+              "excellent": {
+                "type": "integer"
+              },
+              "complete_time": {
+                "type": "integer"
               }
             }
           }
@@ -310,12 +325,6 @@
                                                                             "text": {
                                                                               "type": "string"
                                                                             },
-                                                                            "variants": {
-                                                                              "type": "string"
-                                                                            },
-                                                                            "answer": {
-                                                                              "type": "string"
-                                                                            },
                                                                             "test": {
                                                                               "type": "object",
                                                                               "properties": {
@@ -333,6 +342,8 @@
                                                                                 }
                                                                               }
                                                                             },
+                                                                            "variants": {},
+                                                                            "answer": {},
                                                                             "createdAt": {
                                                                               "type": "string",
                                                                               "format": "date-time"
@@ -880,6 +891,21 @@
                                                                                               }
                                                                                             }
                                                                                           },
+                                                                                          "question_count": {
+                                                                                            "type": "integer"
+                                                                                          },
+                                                                                          "pass": {
+                                                                                            "type": "integer"
+                                                                                          },
+                                                                                          "good": {
+                                                                                            "type": "integer"
+                                                                                          },
+                                                                                          "excellent": {
+                                                                                            "type": "integer"
+                                                                                          },
+                                                                                          "complete_time": {
+                                                                                            "type": "integer"
+                                                                                          },
                                                                                           "createdAt": {
                                                                                             "type": "string",
                                                                                             "format": "date-time"
@@ -937,9 +963,6 @@
                                                                               "type": "string",
                                                                               "format": "date"
                                                                             },
-                                                                            "attempt_count": {
-                                                                              "type": "integer"
-                                                                            },
                                                                             "createdAt": {
                                                                               "type": "string",
                                                                               "format": "date-time"
@@ -993,6 +1016,9 @@
                                                                 "type": "integer"
                                                               },
                                                               "complete_time": {
+                                                                "type": "integer"
+                                                              },
+                                                              "attempt_count": {
                                                                 "type": "integer"
                                                               },
                                                               "createdAt": {
@@ -2049,6 +2075,21 @@
               }
             }
           },
+          "question_count": {
+            "type": "integer"
+          },
+          "pass": {
+            "type": "integer"
+          },
+          "good": {
+            "type": "integer"
+          },
+          "excellent": {
+            "type": "integer"
+          },
+          "complete_time": {
+            "type": "integer"
+          },
           "createdAt": {
             "type": "string",
             "format": "date-time"
@@ -2293,12 +2334,6 @@
                                       "text": {
                                         "type": "string"
                                       },
-                                      "variants": {
-                                        "type": "string"
-                                      },
-                                      "answer": {
-                                        "type": "string"
-                                      },
                                       "test": {
                                         "type": "object",
                                         "properties": {
@@ -2316,6 +2351,8 @@
                                           }
                                         }
                                       },
+                                      "variants": {},
+                                      "answer": {},
                                       "createdAt": {
                                         "type": "string",
                                         "format": "date-time"
@@ -2832,9 +2869,6 @@
                                                                                             "type": "string",
                                                                                             "format": "date"
                                                                                           },
-                                                                                          "attempt_count": {
-                                                                                            "type": "integer"
-                                                                                          },
                                                                                           "createdAt": {
                                                                                             "type": "string",
                                                                                             "format": "date-time"
@@ -2988,6 +3022,21 @@
                                                                                     }
                                                                                   }
                                                                                 }
+                                                                              },
+                                                                              "question_count": {
+                                                                                "type": "integer"
+                                                                              },
+                                                                              "pass": {
+                                                                                "type": "integer"
+                                                                              },
+                                                                              "good": {
+                                                                                "type": "integer"
+                                                                              },
+                                                                              "excellent": {
+                                                                                "type": "integer"
+                                                                              },
+                                                                              "complete_time": {
+                                                                                "type": "integer"
                                                                               },
                                                                               "createdAt": {
                                                                                 "type": "string",
@@ -4009,6 +4058,9 @@
                         "complete_time": {
                           "type": "integer"
                         },
+                        "attempt_count": {
+                          "type": "integer"
+                        },
                         "createdAt": {
                           "type": "string",
                           "format": "date-time"
@@ -4528,12 +4580,6 @@
                                                                               "text": {
                                                                                 "type": "string"
                                                                               },
-                                                                              "variants": {
-                                                                                "type": "string"
-                                                                              },
-                                                                              "answer": {
-                                                                                "type": "string"
-                                                                              },
                                                                               "test": {
                                                                                 "type": "object",
                                                                                 "properties": {
@@ -4551,6 +4597,8 @@
                                                                                   }
                                                                                 }
                                                                               },
+                                                                              "variants": {},
+                                                                              "answer": {},
                                                                               "createdAt": {
                                                                                 "type": "string",
                                                                                 "format": "date-time"
@@ -5098,6 +5146,21 @@
                                                                                                 }
                                                                                               }
                                                                                             },
+                                                                                            "question_count": {
+                                                                                              "type": "integer"
+                                                                                            },
+                                                                                            "pass": {
+                                                                                              "type": "integer"
+                                                                                            },
+                                                                                            "good": {
+                                                                                              "type": "integer"
+                                                                                            },
+                                                                                            "excellent": {
+                                                                                              "type": "integer"
+                                                                                            },
+                                                                                            "complete_time": {
+                                                                                              "type": "integer"
+                                                                                            },
                                                                                             "createdAt": {
                                                                                               "type": "string",
                                                                                               "format": "date-time"
@@ -5155,9 +5218,6 @@
                                                                                 "type": "string",
                                                                                 "format": "date"
                                                                               },
-                                                                              "attempt_count": {
-                                                                                "type": "integer"
-                                                                              },
                                                                               "createdAt": {
                                                                                 "type": "string",
                                                                                 "format": "date-time"
@@ -5211,6 +5271,9 @@
                                                                   "type": "integer"
                                                                 },
                                                                 "complete_time": {
+                                                                  "type": "integer"
+                                                                },
+                                                                "attempt_count": {
                                                                   "type": "integer"
                                                                 },
                                                                 "createdAt": {
@@ -6360,12 +6423,6 @@
               "text": {
                 "type": "string"
               },
-              "variants": {
-                "type": "string"
-              },
-              "answer": {
-                "type": "string"
-              },
               "test": {
                 "oneOf": [
                   {
@@ -6376,7 +6433,9 @@
                   }
                 ],
                 "example": "string or id"
-              }
+              },
+              "variants": {},
+              "answer": {}
             }
           }
         }
@@ -6448,12 +6507,6 @@
           "text": {
             "type": "string"
           },
-          "variants": {
-            "type": "string"
-          },
-          "answer": {
-            "type": "string"
-          },
           "test": {
             "type": "object",
             "properties": {
@@ -6504,12 +6557,6 @@
                                     "text": {
                                       "type": "string"
                                     },
-                                    "variants": {
-                                      "type": "string"
-                                    },
-                                    "answer": {
-                                      "type": "string"
-                                    },
                                     "test": {
                                       "type": "object",
                                       "properties": {
@@ -6527,6 +6574,8 @@
                                         }
                                       }
                                     },
+                                    "variants": {},
+                                    "answer": {},
                                     "createdAt": {
                                       "type": "string",
                                       "format": "date-time"
@@ -7043,9 +7092,6 @@
                                                                                           "type": "string",
                                                                                           "format": "date"
                                                                                         },
-                                                                                        "attempt_count": {
-                                                                                          "type": "integer"
-                                                                                        },
                                                                                         "createdAt": {
                                                                                           "type": "string",
                                                                                           "format": "date-time"
@@ -7199,6 +7245,21 @@
                                                                                   }
                                                                                 }
                                                                               }
+                                                                            },
+                                                                            "question_count": {
+                                                                              "type": "integer"
+                                                                            },
+                                                                            "pass": {
+                                                                              "type": "integer"
+                                                                            },
+                                                                            "good": {
+                                                                              "type": "integer"
+                                                                            },
+                                                                            "excellent": {
+                                                                              "type": "integer"
+                                                                            },
+                                                                            "complete_time": {
+                                                                              "type": "integer"
                                                                             },
                                                                             "createdAt": {
                                                                               "type": "string",
@@ -8220,6 +8281,9 @@
                       "complete_time": {
                         "type": "integer"
                       },
+                      "attempt_count": {
+                        "type": "integer"
+                      },
                       "createdAt": {
                         "type": "string",
                         "format": "date-time"
@@ -8268,6 +8332,8 @@
               }
             }
           },
+          "variants": {},
+          "answer": {},
           "createdAt": {
             "type": "string",
             "format": "date-time"
@@ -8561,12 +8627,6 @@
                                                                                         "text": {
                                                                                           "type": "string"
                                                                                         },
-                                                                                        "variants": {
-                                                                                          "type": "string"
-                                                                                        },
-                                                                                        "answer": {
-                                                                                          "type": "string"
-                                                                                        },
                                                                                         "test": {
                                                                                           "type": "object",
                                                                                           "properties": {
@@ -8584,6 +8644,8 @@
                                                                                             }
                                                                                           }
                                                                                         },
+                                                                                        "variants": {},
+                                                                                        "answer": {},
                                                                                         "createdAt": {
                                                                                           "type": "string",
                                                                                           "format": "date-time"
@@ -9001,9 +9063,6 @@
                                                                                           "type": "string",
                                                                                           "format": "date"
                                                                                         },
-                                                                                        "attempt_count": {
-                                                                                          "type": "integer"
-                                                                                        },
                                                                                         "createdAt": {
                                                                                           "type": "string",
                                                                                           "format": "date-time"
@@ -9057,6 +9116,9 @@
                                                                             "type": "integer"
                                                                           },
                                                                           "complete_time": {
+                                                                            "type": "integer"
+                                                                          },
+                                                                          "attempt_count": {
                                                                             "type": "integer"
                                                                           },
                                                                           "createdAt": {
@@ -10199,6 +10261,21 @@
                           }
                         }
                       },
+                      "question_count": {
+                        "type": "integer"
+                      },
+                      "pass": {
+                        "type": "integer"
+                      },
+                      "good": {
+                        "type": "integer"
+                      },
+                      "excellent": {
+                        "type": "integer"
+                      },
+                      "complete_time": {
+                        "type": "integer"
+                      },
                       "createdAt": {
                         "type": "string",
                         "format": "date-time"
@@ -10408,9 +10485,6 @@
               "finish": {
                 "type": "string",
                 "format": "date"
-              },
-              "attempt_count": {
-                "type": "integer"
               }
             }
           }
@@ -10583,12 +10657,6 @@
                                                                               "text": {
                                                                                 "type": "string"
                                                                               },
-                                                                              "variants": {
-                                                                                "type": "string"
-                                                                              },
-                                                                              "answer": {
-                                                                                "type": "string"
-                                                                              },
                                                                               "test": {
                                                                                 "type": "object",
                                                                                 "properties": {
@@ -10606,6 +10674,8 @@
                                                                                   }
                                                                                 }
                                                                               },
+                                                                              "variants": {},
+                                                                              "answer": {},
                                                                               "createdAt": {
                                                                                 "type": "string",
                                                                                 "format": "date-time"
@@ -11153,6 +11223,21 @@
                                                                                                 }
                                                                                               }
                                                                                             },
+                                                                                            "question_count": {
+                                                                                              "type": "integer"
+                                                                                            },
+                                                                                            "pass": {
+                                                                                              "type": "integer"
+                                                                                            },
+                                                                                            "good": {
+                                                                                              "type": "integer"
+                                                                                            },
+                                                                                            "excellent": {
+                                                                                              "type": "integer"
+                                                                                            },
+                                                                                            "complete_time": {
+                                                                                              "type": "integer"
+                                                                                            },
                                                                                             "createdAt": {
                                                                                               "type": "string",
                                                                                               "format": "date-time"
@@ -11210,9 +11295,6 @@
                                                                                 "type": "string",
                                                                                 "format": "date"
                                                                               },
-                                                                              "attempt_count": {
-                                                                                "type": "integer"
-                                                                              },
                                                                               "createdAt": {
                                                                                 "type": "string",
                                                                                 "format": "date-time"
@@ -11266,6 +11348,9 @@
                                                                   "type": "integer"
                                                                 },
                                                                 "complete_time": {
+                                                                  "type": "integer"
+                                                                },
+                                                                "attempt_count": {
                                                                   "type": "integer"
                                                                 },
                                                                 "createdAt": {
@@ -12347,9 +12432,6 @@
             "type": "string",
             "format": "date"
           },
-          "attempt_count": {
-            "type": "integer"
-          },
           "createdAt": {
             "type": "string",
             "format": "date-time"
@@ -12730,12 +12812,6 @@
                                                                                         "text": {
                                                                                           "type": "string"
                                                                                         },
-                                                                                        "variants": {
-                                                                                          "type": "string"
-                                                                                        },
-                                                                                        "answer": {
-                                                                                          "type": "string"
-                                                                                        },
                                                                                         "test": {
                                                                                           "type": "object",
                                                                                           "properties": {
@@ -12753,6 +12829,8 @@
                                                                                             }
                                                                                           }
                                                                                         },
+                                                                                        "variants": {},
+                                                                                        "answer": {},
                                                                                         "createdAt": {
                                                                                           "type": "string",
                                                                                           "format": "date-time"
@@ -13896,6 +13974,9 @@
                                                                           "complete_time": {
                                                                             "type": "integer"
                                                                           },
+                                                                          "attempt_count": {
+                                                                            "type": "integer"
+                                                                          },
                                                                           "createdAt": {
                                                                             "type": "string",
                                                                             "format": "date-time"
@@ -13971,9 +14052,6 @@
                                                               "finish": {
                                                                 "type": "string",
                                                                 "format": "date"
-                                                              },
-                                                              "attempt_count": {
-                                                                "type": "integer"
                                                               },
                                                               "createdAt": {
                                                                 "type": "string",
@@ -14128,6 +14206,21 @@
                                                         }
                                                       }
                                                     }
+                                                  },
+                                                  "question_count": {
+                                                    "type": "integer"
+                                                  },
+                                                  "pass": {
+                                                    "type": "integer"
+                                                  },
+                                                  "good": {
+                                                    "type": "integer"
+                                                  },
+                                                  "excellent": {
+                                                    "type": "integer"
+                                                  },
+                                                  "complete_time": {
+                                                    "type": "integer"
                                                   },
                                                   "createdAt": {
                                                     "type": "string",
@@ -14668,12 +14761,6 @@
                                                     "text": {
                                                       "type": "string"
                                                     },
-                                                    "variants": {
-                                                      "type": "string"
-                                                    },
-                                                    "answer": {
-                                                      "type": "string"
-                                                    },
                                                     "test": {
                                                       "type": "object",
                                                       "properties": {
@@ -14691,6 +14778,8 @@
                                                         }
                                                       }
                                                     },
+                                                    "variants": {},
+                                                    "answer": {},
                                                     "createdAt": {
                                                       "type": "string",
                                                       "format": "date-time"
@@ -15318,6 +15407,21 @@
                                                                                     }
                                                                                   }
                                                                                 },
+                                                                                "question_count": {
+                                                                                  "type": "integer"
+                                                                                },
+                                                                                "pass": {
+                                                                                  "type": "integer"
+                                                                                },
+                                                                                "good": {
+                                                                                  "type": "integer"
+                                                                                },
+                                                                                "excellent": {
+                                                                                  "type": "integer"
+                                                                                },
+                                                                                "complete_time": {
+                                                                                  "type": "integer"
+                                                                                },
                                                                                 "createdAt": {
                                                                                   "type": "string",
                                                                                   "format": "date-time"
@@ -15764,9 +15868,6 @@
                                                       "type": "string",
                                                       "format": "date"
                                                     },
-                                                    "attempt_count": {
-                                                      "type": "integer"
-                                                    },
                                                     "createdAt": {
                                                       "type": "string",
                                                       "format": "date-time"
@@ -15820,6 +15921,9 @@
                                         "type": "integer"
                                       },
                                       "complete_time": {
+                                        "type": "integer"
+                                      },
+                                      "attempt_count": {
                                         "type": "integer"
                                       },
                                       "createdAt": {
@@ -16573,6 +16677,9 @@
               },
               "complete_time": {
                 "type": "integer"
+              },
+              "attempt_count": {
+                "type": "integer"
               }
             }
           }
@@ -16663,12 +16770,6 @@
                           ]
                         },
                         "text": {
-                          "type": "string"
-                        },
-                        "variants": {
-                          "type": "string"
-                        },
-                        "answer": {
                           "type": "string"
                         },
                         "test": {
@@ -16929,9 +17030,6 @@
                                                                                                       "finish": {
                                                                                                         "type": "string",
                                                                                                         "format": "date"
-                                                                                                      },
-                                                                                                      "attempt_count": {
-                                                                                                        "type": "integer"
                                                                                                       },
                                                                                                       "createdAt": {
                                                                                                         "type": "string",
@@ -17338,6 +17436,21 @@
                                                                                                 }
                                                                                               }
                                                                                             }
+                                                                                          },
+                                                                                          "question_count": {
+                                                                                            "type": "integer"
+                                                                                          },
+                                                                                          "pass": {
+                                                                                            "type": "integer"
+                                                                                          },
+                                                                                          "good": {
+                                                                                            "type": "integer"
+                                                                                          },
+                                                                                          "excellent": {
+                                                                                            "type": "integer"
+                                                                                          },
+                                                                                          "complete_time": {
+                                                                                            "type": "integer"
                                                                                           },
                                                                                           "createdAt": {
                                                                                             "type": "string",
@@ -18359,6 +18472,9 @@
                                     "complete_time": {
                                       "type": "integer"
                                     },
+                                    "attempt_count": {
+                                      "type": "integer"
+                                    },
                                     "createdAt": {
                                       "type": "string",
                                       "format": "date-time"
@@ -18407,6 +18523,8 @@
                             }
                           }
                         },
+                        "variants": {},
+                        "answer": {},
                         "createdAt": {
                           "type": "string",
                           "format": "date-time"
@@ -18497,6 +18615,9 @@
             "type": "integer"
           },
           "complete_time": {
+            "type": "integer"
+          },
+          "attempt_count": {
             "type": "integer"
           },
           "createdAt": {

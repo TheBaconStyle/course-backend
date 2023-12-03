@@ -50,6 +50,9 @@
     },
     "complete_time": {
       "type": "integer"
+    },
+    "attempt_count": {
+      "type": "integer"
     }
   }
 }

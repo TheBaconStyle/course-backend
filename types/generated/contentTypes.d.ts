@@ -705,6 +705,11 @@ export interface ApiAttemptAttempt extends Schema.CollectionType {
       'oneToMany',
       'api::question-variant.question-variant'
     >;
+    question_count: Attribute.Integer;
+    pass: Attribute.Integer;
+    good: Attribute.Integer;
+    excellent: Attribute.Integer;
+    complete_time: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -828,13 +833,13 @@ export interface ApiQuestionQuestion extends Schema.CollectionType {
       Attribute.Required &
       Attribute.DefaultTo<'single'>;
     text: Attribute.Text & Attribute.Required;
-    variants: Attribute.Text & Attribute.Required;
-    answer: Attribute.Text & Attribute.Required;
     test: Attribute.Relation<
       'api::question.question',
       'manyToOne',
       'api::test.test'
     >;
+    variants: Attribute.JSON & Attribute.Required;
+    answer: Attribute.JSON & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -929,7 +934,6 @@ export interface ApiSessionSession extends Schema.CollectionType {
     >;
     start: Attribute.Date;
     finish: Attribute.Date;
-    attempt_count: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1074,6 +1078,7 @@ export interface ApiTestTest extends Schema.CollectionType {
     >;
     question_count: Attribute.Integer;
     complete_time: Attribute.Integer;
+    attempt_count: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::test.test', 'oneToOne', 'admin::user'> &

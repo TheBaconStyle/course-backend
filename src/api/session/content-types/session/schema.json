@@ -41,9 +41,6 @@
     },
     "finish": {
       "type": "date"
-    },
-    "attempt_count": {
-      "type": "integer"
     }
   }
 }
