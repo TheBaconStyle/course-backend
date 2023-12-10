@@ -41,6 +41,29 @@
     },
     "finish": {
       "type": "date"
+    },
+    "question_count": {
+      "type": "integer",
+      "required": true
+    },
+    "pass": {
+      "type": "integer",
+      "required": true
+    },
+    "good": {
+      "type": "integer",
+      "required": true
+    },
+    "excellent": {
+      "type": "integer",
+      "required": true
+    },
+    "complete_time": {
+      "type": "integer",
+      "required": true
+    },
+    "attempt_count": {
+      "type": "integer"
     }
   }
 }

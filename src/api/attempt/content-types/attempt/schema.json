@@ -34,20 +34,10 @@
       "target": "api::question-variant.question-variant",
       "mappedBy": "attempt"
     },
-    "question_count": {
-      "type": "integer"
-    },
-    "pass": {
-      "type": "integer"
-    },
-    "good": {
-      "type": "integer"
-    },
-    "excellent": {
-      "type": "integer"
-    },
-    "complete_time": {
-      "type": "integer"
+    "completed": {
+      "type": "boolean",
+      "default": false,
+      "required": false
     }
   }
 }

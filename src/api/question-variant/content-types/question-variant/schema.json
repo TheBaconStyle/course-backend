@@ -18,20 +18,17 @@
       "target": "api::attempt.attempt",
       "inversedBy": "question_variants"
     },
-    "sequence_index": {
-      "type": "integer"
-    },
-    "variants_dump": {
-      "type": "text",
-      "required": true
-    },
     "question": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::question.question"
     },
+    "variants": {
+      "type": "json",
+      "required": false
+    },
     "answer": {
-      "type": "text"
+      "type": "json"
     }
   }
 }
